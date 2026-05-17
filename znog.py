@@ -1,6 +1,6 @@
 # HECHO POR KRISTOPHER PACHECO, FERNANDO CHOQUEZ, GONZALO TASAYCO
 from lectura import LeerFlotante, LeerEntero, LeerConIntentosEntero, LeerConIntentosFlotante, LeerConIntentos
-from utils import BorrarPantalla 
+from utils import BorrarPantalla, EsNatural
 
 def DeteccionFatiga():
     BorrarPantalla()
@@ -14,6 +14,7 @@ def DeteccionFatiga():
     Sumvelocidad= 0
 
     while continuar:
+        BorrarPantalla()
         if intentos == 0:
             print("Se han agotado los intentos. Mostrando el reporte.")
             break
@@ -39,13 +40,13 @@ def DeteccionFatiga():
             Tseguros += 1
             estado= "Seguro"
 
-        elif (5<=horas<=7) or (80<velocidad<=100) or (pausa == 0):
+        elif (5<=horas<=7) or (80<velocidad<=100) and (pausa == 0):
             Triesgos += 1
             estado= "En Riesgo"
         
         elif horas >= 8 or velocidad > 100 or (horas>=6 and pausa == 0):
             Tpeligro += 1
-            estado= "En Peligro"
+            estado= "Peligroso"
         
         else:
             estado= "Indeterminado"
@@ -55,25 +56,24 @@ def DeteccionFatiga():
 
         print(f"El conductor está clasificado como: {estado}")
 
-        opcion = LeerConIntentos("¿Desea registrar otro conductor? (S/N):", lambda entrada: entrada.upper == "S" or entrada.upper == "N", 3)
+        opcion = LeerConIntentos("¿Desea registrar otro conductor? (S/N):", lambda entrada: entrada.upper() == "S" or entrada.upper() == "N", 3)
         
         if opcion is None:
             break
         else:
-            opcion = (opcion == "S")
+            continuar = (opcion == "S")
 
-
-    
     if Tconductores > 0:
         Promvelocidad = Sumvelocidad/Tconductores
     else:
         Promvelocidad = 0.0
     print(f"""
-    ==========================================================================
-     | REPORTE FINAL:
-     |   Total de conductores registrados: {Tconductores}
-     |   La Velocidad Promedio de los conductores es: {Promvelocidad:.2f} Km/H  
-     |   Conductores en estado Seguro: {Tseguros}
-     |   Conductores en estado de Riesgo: {Triesgos}  
-     |   Conductores en estado de Peligro: {Tpeligro}  
-          """)
+    =================================================================================================
+      REPORTE FINAL:                                                                                
+        Total de conductores registrados: {Tconductores}                                            
+        La Velocidad Promedio de los conductores es: {Promvelocidad:.2f} Km/H                       
+        Conductores en estado Seguro: {Tseguros}                                                    
+        Conductores en estado de Riesgo: {Triesgos}                                                 
+        Conductores en estado de Peligro: {Tpeligro}                                                
+    =================================================================================================
+     """)

@@ -26,11 +26,13 @@ def Menu():
                 DeteccionFatiga()
             case 2:
                 print("""
+    =========================================================================                   
     |  Este sistema evalua si el conductor esta en condiciones para         |
     |  continuar conduciendo.                                               |
     |   (Horas continuas de conduccion)                                     |
     |   (Velocidad promedio del viaje)                                      |
     |   (Numero de pausas realizadas durante el viaje)                      |
+    =========================================================================
     """)
                 print("Regresando al menu principal...")
                 intentos = 3
