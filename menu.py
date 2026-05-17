@@ -23,6 +23,7 @@ def Menu():
             case 1:
                 print("Iniciando sistema de detección de fatiga...")
                 intentos = 3
+                DeteccionFatiga()
             case 2:
                 print("""
     |  Este sistema evalua si el conductor esta en condiciones para         |
