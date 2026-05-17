@@ -1,11 +1,12 @@
 # HECHO POR Pacheco Arnao Kristopher Williams
-from lectura import LeerEntero
+from lectura import LeerEntero, LeerEntrada
 from utils import BorrarPantalla
 from znog import DeteccionFatiga
+
+
 # primera parte del menu
 def Menu():
     continuar = True
-    intentos = 3
     while continuar:
         BorrarPantalla()
         print("""
@@ -18,11 +19,10 @@ def Menu():
     =========================================================================
     """)
 
-        opcion = LeerEntero("Ingrese una opción:")
+        opcion = LeerEntrada("Ingrese una opción:", int, intentos=3)
         match opcion:
             case 1:
                 print("Iniciando sistema de detección de fatiga...")
-                intentos = 3
                 DeteccionFatiga()
             case 2:
                 print("""
@@ -35,16 +35,7 @@ def Menu():
     =========================================================================
     """)
                 print("Regresando al menu principal...")
-                intentos = 3
-            case 3:
+                input()
+            case 3 | None:
                 print("Saliendo del programa...")
                 continuar = False
-            case _:
-                intentos -= 1
-                if intentos != 0:
-                    print(f"Lo sentimos es invalido, le quedan: {intentos}")
-                else:
-                    print("Demasiados intentos fallidos. Saliendo del programa.")
-                    continuar = False
-        print("Presione enter para continuar...")
-        input()
