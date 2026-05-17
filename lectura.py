@@ -1,3 +1,4 @@
+# HECHO POR FERCHO
 def _leer(prompt):
     print(prompt)
     entrada = input(">>> ")
