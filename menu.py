@@ -1,5 +1,5 @@
 # HECHO POR Pacheco Arnao Kristopher Williams
-from lectura import LeerEntero, LeerEntrada
+from lectura import LeerEntrada
 from utils import BorrarPantalla
 from znog import DeteccionFatiga
 

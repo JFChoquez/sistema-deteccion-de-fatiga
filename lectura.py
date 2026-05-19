@@ -1,9 +1,7 @@
-# HECHO POR FERCHO
+# HECHO POR FERNANDO CHOQUEZ
 from typing import TypeVar, Callable
-from utils import EsNatural
 
 T = TypeVar("T")
-
 
 def LeerEntrada(
     prompt: str,

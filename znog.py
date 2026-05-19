@@ -1,4 +1,4 @@
-# HECHO POR KRISTOPHER PACHECO, FERNANDO CHOQUEZ, GONZALO TASAYCO
+# HECHO POR KRISTOPHER PACHECO, GONZALO TASAYCO
 from lectura import LeerEntrada
 from utils import BorrarPantalla
 
@@ -33,7 +33,7 @@ def DeteccionFatiga():
             break
 
         horas = LeerEntrada(
-            "Ingrese las horas de conducción continuas:",
+            "Ingrese las horas de conducción continuas: ",
             float,
             intentos=3,
             condicion=lambda v: 0 < v < 30,
@@ -47,7 +47,7 @@ def DeteccionFatiga():
             break
 
         pausa = LeerEntrada(
-            "Ingrese el número de pausas (hrs):",
+            "Ingrese el número de pausas (hrs): ",
             int,
             intentos=3,
             condicion=lambda p: 0 <= p,
@@ -62,15 +62,15 @@ def DeteccionFatiga():
 
         if horas <= 4 and velocidad <= 80 and pausa >= 1:
             Tseguros += 1
-            estado = "Seguro"
+            estado = "Conductor Seguro"
 
         elif (5 <= horas <= 7) or (80 < velocidad <= 100) and (pausa == 0):
             Triesgos += 1
-            estado = "En Riesgo"
+            estado = "Conductor en riesgo"
 
         elif horas >= 8 or velocidad > 100 or (horas >= 6 and pausa == 0):
             Tpeligro += 1
-            estado = "Peligroso"
+            estado = "Conductor peligroso"
 
         else:
             estado = "Indeterminado"
