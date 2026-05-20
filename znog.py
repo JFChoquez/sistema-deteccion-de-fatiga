@@ -47,7 +47,7 @@ def DeteccionFatiga():
             break
 
         pausa = LeerEntrada(
-            "Ingrese el número de pausas (hrs): ",
+            "Ingrese el número de pausas: ",
             int,
             intentos=3,
             condicion=lambda p: 0 <= p,
